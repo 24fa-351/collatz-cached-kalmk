@@ -11,7 +11,12 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL));
 
-    output_csv(n, min, max);
+    output(n, min, max);
+
+    // TODO:
+    // 1) implement an LRU cache
+    // 2) add additional arguments that specify the
+    // cache policy such as (none, LRU, x) and cache size (int)
 
     return 0;
 }
