@@ -38,9 +38,14 @@
 
 #include "cache_lru.h"
 
-unsigned long long collatz_lru(lru_cache *cache, unsigned long long random_num);
+extern unsigned long long global_cache_hits;
+extern unsigned long long global_cache_accesses;
+extern unsigned long long global_cache_misses;
 
-void output_lru(lru_cache *cache, unsigned long long n, unsigned long long min,
+unsigned long long collatz_lru(lru_cache *object,
+                               unsigned long long random_num);
+
+void output_lru(lru_cache *object, unsigned long long n, unsigned long long min,
                 unsigned long long max);
 
 #endif

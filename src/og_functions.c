@@ -34,13 +34,12 @@
 //=======Begin code area
 
 #include "og_functions.h"
+#include "cache_lru.h"
 
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-#include "cache_lru.h"
 
 unsigned long long random_number(unsigned long long min, unsigned long long max)
 {
@@ -49,7 +48,7 @@ unsigned long long random_number(unsigned long long min, unsigned long long max)
 
 void to_lower_case(char *str)
 {
-    for (int i = 0; str[i] != '\0'; i++)
+    for (int i = 0; str[i] != '\0'; ++i)
     {
         str[i] = tolower(str[i]);
     }
@@ -78,10 +77,22 @@ unsigned long long collatz_og(unsigned long long random_num)
 void output_og(unsigned long long n, unsigned long long min,
                unsigned long long max)
 {
+    printf("number, steps\n");
     for (; n != 0; --n)
     {
         unsigned long long rn = random_number(min, max);
         unsigned long long steps_took = collatz_og(rn);
-        printf("number: %llu, steps: %llu\n", rn, steps_took);
+        printf("%llu, %llu\n", rn, steps_took);
     }
+}
+
+double get_cache_ratio()
+{
+    // double cache_ratio = ((double)(global_cache_hits) /
+    // (global_cache_accesses + global_cache_hits));
+
+    double cache_hit_ratio =
+        ((double)global_cache_hits / (global_cache_hits + global_cache_misses));
+
+    return cache_hit_ratio;
 }

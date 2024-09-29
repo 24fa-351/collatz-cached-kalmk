@@ -38,15 +38,15 @@
 #include <string.h>
 #include <time.h>
 
+#include "cache_fifo.h"
 #include "cache_lru.h"
+#include "fifo_functions.h"
 #include "lru_functions.h"
 #include "og_functions.h"
 
-// TODO:
-//
-// 1) implement FIFO.
-//
-// 2) report cache hit % for both cache types.
+unsigned long long global_cache_hits;
+unsigned long long global_cache_accesses;
+unsigned long long global_cache_misses;
 
 int main(int argc, char *argv[])
 {
@@ -72,8 +72,14 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(cache_policy, "fifo") == 0)
     {
-        // FIFO here
+        fifo_cache *cache = fifo_cache_init(cache_size);
+        output_fifo(cache, n, min, max);
+        fifo_cache_free(cache);
     }
+
+    printf("\nTotal cache hits: %llu\n", global_cache_hits);
+    printf("cache hit ratio: = %lf\n", get_cache_ratio());
+    printf("CACHE HIT RATIO: %.0lf%%\n", get_cache_ratio() * 100);
 
     return 0;
 }

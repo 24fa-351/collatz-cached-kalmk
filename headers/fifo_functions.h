@@ -33,44 +33,19 @@
 //
 //=======Begin code area
 
-#include "lru_functions.h"
-#include "cache_lru.h"
-#include "og_functions.h"
+#ifndef FIFO_FUNCTIONS_H
+#define FIFO_FUNCTIONS_H
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "cache_fifo.h"
 
-unsigned long long collatz_lru(lru_cache *object,
-                               unsigned long long /*key*/ random_num)
-{
-    // check if the random_num is already in the cache
-    unsigned long long cached_value = lru_cache_get(object, /*key*/ random_num);
+extern unsigned long long global_cache_hits;
+extern unsigned long long global_cache_accesses;
+extern unsigned long long global_cache_misses;
 
-    if (cached_value != -1)
-    {
-        ++global_cache_hits;
+unsigned long long collatz_fifo(fifo_cache *cache,
+                                unsigned long long random_num);
 
-        return cached_value;
-    }
+void output_fifo(fifo_cache *object, unsigned long long n,
+                 unsigned long long min, unsigned long long max);
 
-    ++global_cache_misses;
-
-    unsigned long long num_of_steps = collatz_og(random_num);
-    lru_cache_put(object, random_num, num_of_steps);
-
-    return num_of_steps;
-}
-
-void output_lru(lru_cache *object, unsigned long long n, unsigned long long min,
-                unsigned long long max)
-{
-    printf("number, steps\n");
-    for (; n != 0; --n)
-    {
-        unsigned long long rn = random_number(min, max);
-        unsigned long long steps_took = collatz_lru(object, rn);
-        printf("%llu, %llu\n", rn, steps_took);
-    }
-}
+#endif
