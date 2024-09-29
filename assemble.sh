@@ -1,1 +1,1 @@
-gcc -o collatz collatz.c functions.c
+gcc -I headers/ src/*.c main.c -o collatz
