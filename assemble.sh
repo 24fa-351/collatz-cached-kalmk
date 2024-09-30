@@ -29,4 +29,4 @@
 #     Ubuntu 22.04 WSL
 ####################################################################################
 
-gcc -I headers/ src/*.c main.c -o collatz
+gcc -I headers/ src/*.c main.c -o collatz -Wall
