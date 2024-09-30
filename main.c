@@ -77,9 +77,7 @@ int main(int argc, char *argv[])
         fifo_cache_free(cache);
     }
 
-    printf("\nTotal cache hits: %llu\n", global_cache_hits);
-    printf("cache hit ratio: = %lf\n", get_cache_ratio());
-    printf("CACHE HIT RATIO: %.0lf%%\n", get_cache_ratio() * 100);
+    get_cache_ratio();
 
     return 0;
 }

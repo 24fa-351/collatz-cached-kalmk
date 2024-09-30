@@ -82,7 +82,6 @@ node_fifo pop(fifo_cache *object)
     return item;
 }
 
-// Function to free the FIFO cache
 void fifo_cache_free(fifo_cache *object)
 {
     if (object)
