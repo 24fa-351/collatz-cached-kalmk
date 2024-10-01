@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
         fifo_cache_free(cache);
     }
 
-    get_cache_ratio();
+    output_cache_ratio();
 
     return 0;
 }

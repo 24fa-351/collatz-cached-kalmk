@@ -44,15 +44,15 @@ extern unsigned long long global_cache_hits;
 extern unsigned long long global_cache_accesses;
 extern unsigned long long global_cache_misses;
 
-typedef struct Node_lru
+typedef struct node_lru
 {
     unsigned long long key;
     unsigned long long value;
-} Node_lru;
+} node_lru;
 
 typedef struct lru_cache
 {
-    Node_lru *cache;
+    node_lru *cache;
     unsigned long long capacity;
     unsigned long long size;
 } lru_cache;

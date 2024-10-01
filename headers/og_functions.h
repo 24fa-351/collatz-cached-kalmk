@@ -50,6 +50,6 @@ unsigned long long collatz_og(unsigned long long random_num);
 void output_og(unsigned long long n, unsigned long long min,
                unsigned long long max);
 
-double get_cache_ratio();
+void output_cache_ratio();
 
 #endif

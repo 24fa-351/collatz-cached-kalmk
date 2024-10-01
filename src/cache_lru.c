@@ -41,12 +41,12 @@
 
 lru_cache *lru_cache_init(unsigned long long capacity)
 {
-    lru_cache *lru_cache_object = (lru_cache *)malloc(sizeof(lru_cache));
+    lru_cache *lru_cache_object = malloc(sizeof(lru_cache));
 
     // object->cache is an "array of nodes" and each node can store key-value
     // pair.
     // example: object->cache[0], object->cache[1] ...
-    lru_cache_object->cache = (Node_lru *)malloc(sizeof(Node_lru) * capacity);
+    lru_cache_object->cache = malloc(sizeof(node_lru) * capacity);
 
     lru_cache_object->capacity = capacity;
     lru_cache_object->size = 0;
@@ -64,7 +64,7 @@ unsigned long long lru_cache_get(lru_cache *object, unsigned long long key)
             // since found, move the node to the end to mark as most recently
             // used and return the value (shift all elements to the left to
             // remove the node that was found) and then place it in the last
-            Node_lru found_node = object->cache[i];
+            node_lru found_node = object->cache[i];
             for (unsigned long long j = i; j < object->size - 1; ++j)
             {
                 object->cache[j] = object->cache[j + 1];
@@ -104,8 +104,6 @@ void lru_cache_put(lru_cache *object, unsigned long long key,
 
 void lru_cache_free(lru_cache *object)
 {
-    // free the turtles to the sea...
-    // hope they wont be eaten by the birds
     free(object->cache);
     free(object);
 }

@@ -86,7 +86,7 @@ void output_og(unsigned long long n, unsigned long long min,
     }
 }
 
-double get_cache_ratio()
+void output_cache_ratio()
 {
     double cache_hit_ratio =
         ((double)global_cache_hits / (global_cache_hits + global_cache_misses));
@@ -94,6 +94,4 @@ double get_cache_ratio()
     printf("\nTotal cache hits: %llu\n", global_cache_hits);
     printf("cache hit ratio: %lf\n", cache_hit_ratio);
     printf("CACHE HIT RATIO: %.0lf%%\n", cache_hit_ratio * 100);
-
-    return cache_hit_ratio;
 }

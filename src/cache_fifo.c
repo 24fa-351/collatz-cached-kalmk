@@ -41,8 +41,8 @@
 
 fifo_cache *fifo_cache_init(unsigned long long capacity)
 {
-    fifo_cache *object = (fifo_cache *)malloc(sizeof(fifo_cache));
-    object->cache = (node_fifo *)malloc(capacity * sizeof(node_fifo));
+    fifo_cache *object = malloc(sizeof(fifo_cache));
+    object->cache = malloc(capacity * sizeof(node_fifo));
 
     object->capacity = capacity;
     object->size = 0;
@@ -84,9 +84,6 @@ node_fifo pop(fifo_cache *object)
 
 void fifo_cache_free(fifo_cache *object)
 {
-    if (object)
-    {
-        free(object->cache);
-        free(object);
-    }
+    free(object->cache);
+    free(object);
 }
