@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "functions.h": "c",
+        "stdlib.h": "c",
+        "time.h": "c",
+        "cache_lru.h": "c",
+        "random": "c",
+        "limits": "c",
+        "string.h": "c",
+        "lru_functions.h": "c",
+        "og_functions.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "ctype.h": "c",
+        "deque": "c",
+        "vector": "c",
+        "cache_fifo.h": "c"
+    }
+}
