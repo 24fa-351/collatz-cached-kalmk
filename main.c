@@ -15,6 +15,11 @@ unsigned long long global_cache_misses;
 
 int main(int argc, char *argv[])
 {
+    if (argc != 6)
+    {
+        printf("Usage: %s <n> <min> <max> <cache_policy> <cache_size>\n", argv[0]);
+        return 1;
+    }
     srand(time(NULL));
 
     unsigned long long n = atoi(argv[1]);
