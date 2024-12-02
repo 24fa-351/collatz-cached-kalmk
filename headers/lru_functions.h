@@ -10,7 +10,7 @@ extern unsigned long long global_cache_misses;
 unsigned long long collatz_lru(lru_cache *object,
                                unsigned long long random_num);
 
-void output_lru(lru_cache *object, unsigned long long n, unsigned long long min,
+void output_lru(lru_cache *object, unsigned long long num_of_values, unsigned long long min,
                 unsigned long long max);
 
 #endif

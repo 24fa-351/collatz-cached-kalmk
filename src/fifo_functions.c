@@ -11,15 +11,15 @@ unsigned long long collatz_fifo(fifo_cache *object,
                                 unsigned long long /*key*/ random_num)
 {
     // check if the key is already in the cache
-    for (unsigned long long i = object->front_index; i != object->rear_index;
-         i = (i + 1) % object->capacity)
+    for (unsigned long long ix = object->front_index; ix != object->rear_index;
+         ix = (ix + 1) % object->capacity)
     {
-        if (object->cache[i].key == random_num)
+        if (object->cache[ix].key == random_num)
         {
             // printf("Key already in the cache! returning...\n");
             ++global_cache_hits;
 
-            return object->cache[i].value;
+            return object->cache[ix].value;
         }
     }
     ++global_cache_misses;
@@ -38,11 +38,11 @@ unsigned long long collatz_fifo(fifo_cache *object,
     return num_of_steps;
 }
 
-void output_fifo(fifo_cache *object, unsigned long long n,
+void output_fifo(fifo_cache *object, unsigned long long num_of_values,
                  unsigned long long min, unsigned long long max)
 {
     printf("number, steps\n");
-    for (; n != 0; --n)
+    for (; num_of_values != 0; --num_of_values)
     {
         unsigned long long rn = random_number(min, max);
         unsigned long long steps_took = collatz_fifo(object, rn);

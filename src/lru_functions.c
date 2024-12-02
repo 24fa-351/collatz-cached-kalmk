@@ -28,11 +28,11 @@ unsigned long long collatz_lru(lru_cache *object,
     return num_of_steps;
 }
 
-void output_lru(lru_cache *object, unsigned long long n, unsigned long long min,
+void output_lru(lru_cache *object, unsigned long long num_of_values, unsigned long long min,
                 unsigned long long max)
 {
     printf("number, steps\n");
-    for (; n != 0; --n)
+    for (; num_of_values != 0; --num_of_values)
     {
         unsigned long long rn = random_number(min, max);
         unsigned long long steps_took = collatz_lru(object, rn);

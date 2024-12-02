@@ -10,7 +10,7 @@ extern unsigned long long global_cache_misses;
 unsigned long long collatz_fifo(fifo_cache *cache,
                                 unsigned long long random_num);
 
-void output_fifo(fifo_cache *object, unsigned long long n,
+void output_fifo(fifo_cache *object, unsigned long long num_of_values,
                  unsigned long long min, unsigned long long max);
 
 #endif

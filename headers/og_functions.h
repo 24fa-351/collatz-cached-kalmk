@@ -12,7 +12,7 @@ void to_lower_case(char *str);
 
 unsigned long long collatz_og(unsigned long long random_num);
 
-void output_og(unsigned long long n, unsigned long long min,
+void output_og(unsigned long long num_of_values, unsigned long long min,
                unsigned long long max);
 
 void output_cache_ratio();

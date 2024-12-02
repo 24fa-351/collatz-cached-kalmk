@@ -13,9 +13,9 @@ unsigned long long random_number(unsigned long long min, unsigned long long max)
 
 void to_lower_case(char *str)
 {
-    for (int i = 0; str[i] != '\0'; ++i)
+    for (int ix = 0; str[ix] != '\0'; ++ix)
     {
-        str[i] = tolower(str[i]);
+        str[ix] = tolower(str[ix]);
     }
 }
 
@@ -39,11 +39,11 @@ unsigned long long collatz_og(unsigned long long random_num)
     return num_of_steps;
 }
 
-void output_og(unsigned long long n, unsigned long long min,
+void output_og(unsigned long long num_of_values, unsigned long long min,
                unsigned long long max)
 {
     printf("number, steps\n");
-    for (; n != 0; --n)
+    for (; num_of_values != 0; --num_of_values)
     {
         unsigned long long rn = random_number(min, max);
         unsigned long long steps_took = collatz_og(rn);

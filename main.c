@@ -17,12 +17,12 @@ int main(int argc, char *argv[])
 {
     if (argc != 6)
     {
-        printf("Usage: %s <n> <min> <max> <cache_policy> <cache_size>\n", argv[0]);
+        printf("Usage: %s <num_of_values> <min> <max> <cache_policy> <cache_size>\n", argv[0]);
         return 1;
     }
     srand(time(NULL));
 
-    unsigned long long n = atoi(argv[1]);
+    unsigned long long num_of_values = atoi(argv[1]);
     unsigned long long min = atoi(argv[2]);
     unsigned long long max = atoi(argv[3]);
     char cache_policy[10];
@@ -32,18 +32,18 @@ int main(int argc, char *argv[])
 
     if (strcmp(cache_policy, "none") == 0)
     {
-        output_og(n, min, max);
+        output_og(num_of_values, min, max);
     }
     else if (strcmp(cache_policy, "lru") == 0)
     {
         lru_cache *cache = lru_cache_init(cache_size);
-        output_lru(cache, n, min, max);
+        output_lru(cache, num_of_values, min, max);
         lru_cache_free(cache);
     }
     else if (strcmp(cache_policy, "fifo") == 0)
     {
         fifo_cache *cache = fifo_cache_init(cache_size);
-        output_fifo(cache, n, min, max);
+        output_fifo(cache, num_of_values, min, max);
         fifo_cache_free(cache);
     }
 

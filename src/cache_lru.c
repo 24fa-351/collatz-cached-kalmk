@@ -21,18 +21,18 @@ lru_cache *lru_cache_init(unsigned long long capacity)
 
 unsigned long long lru_cache_get(lru_cache *object, unsigned long long key)
 {
-    for (unsigned long long i = 0; i < object->size; ++i)
+    for (unsigned long long ix = 0; ix < object->size; ++ix)
     {
         // select a node and check its key
-        if (object->cache[i].key == key)
+        if (object->cache[ix].key == key)
         {
             // since found, move the node to the end to mark as most recently
             // used and return the value (shift all elements to the left to
             // remove the node that was found) and then place it in the last
-            node_lru found_node = object->cache[i];
-            for (unsigned long long j = i; j < object->size - 1; ++j)
+            node_lru found_node = object->cache[ix];
+            for (unsigned long long jx = ix; jx < object->size - 1; ++jx)
             {
-                object->cache[j] = object->cache[j + 1];
+                object->cache[jx] = object->cache[jx + 1];
             }
             object->cache[object->size - 1] = found_node;
 
@@ -54,9 +54,9 @@ void lru_cache_put(lru_cache *object, unsigned long long key,
     if (object->size == object->capacity)
     {
         // printf("array is full! changing...\n");
-        for (unsigned long long i = 0; i < object->size - 1; ++i)
+        for (unsigned long long ix = 0; ix < object->size - 1; ++ix)
         {
-            object->cache[i] = object->cache[i + 1];
+            object->cache[ix] = object->cache[ix + 1];
         }
         --object->size;
     }
